@@ -1,19 +1,19 @@
 {
   "students": [
     {
-      "id": "2517",
-      "studentName": "Afiya Zuha K",
-      "studentEmail": "afiyazuhak@gmail.com"
+      "id": "9c8c",
+      "studentName": "Sam",
+      "studentEmail": "sam@gmail.com"
     },
     {
-      "studentName": "Sad",
-      "studentEmail": "sadiya@gmail.com",
-      "id": "1d27"
+      "id": "4c86",
+      "studentName": "john",
+      "studentEmail": "john@gmail.com"
     },
     {
-      "id": "1f7e",
-      "studentName": "Nazneen K",
-      "studentEmail": "nazneen17k@gmail.com"
+      "id": "ca26",
+      "studentName": "Diana",
+      "studentEmail": "diana@gmail.com"
     }
   ]
 }
