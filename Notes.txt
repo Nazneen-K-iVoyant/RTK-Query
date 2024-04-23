@@ -1,0 +1,53 @@
+Sure, let's break down the code:
+
+1. **Import Statements**:
+   ```typescript
+   import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+   import { Student } from "../models/studentModel";
+   ```
+   - Here, you're importing `createApi` and `fetchBaseQuery` from the `@reduxjs/toolkit/query` package. These are utilities provided by Redux Toolkit Query for creating APIs.
+   - You're also importing the `Student` type from the `studentModel` file, presumably located in the `../models` directory. This type represents the structure of student data.
+
+2. **createApi Function**:
+   ```typescript
+   export const studentApi = createApi({
+       baseQuery: fetchBaseQuery(
+           {
+               baseUrl: "http://localhost:3000"
+           }
+       ),
+       endpoints: (builder) => ({
+           getStudents: builder.query<Student[], void>({
+               query: () => "/students"
+           }),
+       })
+   })
+   ```
+   - `createApi` is a function provided by Redux Toolkit Query for defining APIs.
+   - `baseQuery` specifies the base query function to be used for making network requests. Here, `fetchBaseQuery` is used, which is provided by Redux Toolkit Query. You configure it with the base URL (`baseUrl`) of your API.
+   - `endpoints` is an object where you define different endpoints of your API. Each endpoint represents a specific HTTP request you want to make.
+   - In this example, you're defining one endpoint named `getStudents`. It's a `query` endpoint, meaning it retrieves data from the server. The `builder.query` function takes two arguments: the type of data returned (`Student[]` - an array of `Student` objects), and the input type (`void` - indicating no input is required for this query).
+   - Inside the `getStudents` endpoint definition, you specify the `query` property, which is a function that returns the relative URL for the endpoint. In this case, it's `"/students"`, indicating that this endpoint fetches the list of students from the server.
+
+Overall, this code sets up an API using Redux Toolkit Query, defining a base query function with a base URL and creating one endpoint (`getStudents`) that fetches student data from the specified URL.
+
+
+
+*********************************************************************************************************************************************************************************
+
+In the context of creating an API using Redux Toolkit Query, an "endpoint" refers to a specific HTTP request that you want to make to your server. Each endpoint typically corresponds to a specific resource or action in your backend API.
+
+When you define endpoints using Redux Toolkit Query, you're essentially defining a set of functions that encapsulate the details of making HTTP requests to your server. These functions specify the details of the request, such as the HTTP method (GET, POST, PUT, DELETE), the URL, query parameters, request headers, request body, etc.
+
+For example, you might have endpoints like:
+- `getStudents`: Retrieves a list of students from the server.
+- `addStudent`: Adds a new student to the server.
+- `updateStudent`: Updates an existing student on the server.
+- `deleteStudent`: Deletes a student from the server.
+
+Each endpoint definition typically includes information such as:
+- The HTTP method to use (e.g., GET, POST).
+- The URL path (relative or absolute) where the request should be sent.
+- Any parameters or data needed for the request (e.g., query parameters, request body).
+
+By defining endpoints in your Redux Toolkit Query API, you abstract away the details of making HTTP requests and provide a clean interface for interacting with your backend API. This makes it easier to manage API interactions and maintain consistency across your application.
