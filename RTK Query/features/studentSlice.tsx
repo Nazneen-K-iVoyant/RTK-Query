@@ -1,4 +1,27 @@
+// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
+// import { Student } from "../models/studentModel";
+
+// export const studentApi = createApi({
+//     baseQuery: fetchBaseQuery(
+//         {
+//             baseUrl: "http://localhost:3000"
+//         }
+//     ),
+//     endpoints: (builder) => ({
+//         getStudents: builder.query<Student[], void>({
+//             query: () => "/students"
+//         }),
+//     }),
+// })
+
+// // export const {useGetStudentsQuery}=studentApi
+
+// export const { useGetStudentsQuery } = studentApi;
+
+
+
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+// import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query";
 import { Student } from '../models/studentModel';
 
 export const studentApi = createApi({
@@ -11,11 +34,7 @@ export const studentApi = createApi({
   endpoints: (builder) => ({
     getStudents: builder.query<Student[] , void>({
       query: () => '/students',
-      providesTags:['Students'],
-      transformResponse:(response:Student[],meta,args)=>{
-        // return response.slice(0,5)
-        return response.sort((a,b)=>a.studentName.localeCompare(b.studentName))
-      }
+      providesTags:['Students']
     }),
 
     getStudent: builder.query<Student , string>({
